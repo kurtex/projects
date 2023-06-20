@@ -1,1 +1,0 @@
-# kurtex.github.io
