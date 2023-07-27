@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Qr } from './components/Qr';
 import image from './assets/image-qr-code.png';
 import HeaderLink from './components/HeaderLinks';
@@ -13,9 +13,9 @@ function App() {
   return (
     <main className='text-[#000]'>
       <Routes>
-        <Route path='/' element={<HeaderLink />} />
+        <Route path={routes.homePage} element={<HeaderLink />} />
         <Route
-          path={routes.qrChallenge}
+          path={`${routes.homePage}/${routes.qrChallenge}`}
           element={<Qr src={image} title={titleText} body={bodyText} />}
         />
       </Routes>
