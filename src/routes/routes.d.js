@@ -1,5 +1,5 @@
 const routes = {
-  homePage: '/projects',
+  homePage: '/',
   qrChallenge: 'qr-challenge'
 };
 
