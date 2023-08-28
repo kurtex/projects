@@ -10,15 +10,20 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test-semi": "semistandard && node my-normal-tests-littered-with-semicolons.js"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",
+    "lottie-react": "^2.4.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.0",
+    "vite-plugin-svgr": "^3.2.0",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
@@ -33,6 +38,7 @@
     "gh-pages": "^5.0.0",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
-    "vite": "^4.3.9"
+    "vite": "^4.3.9",
+    "semistandard": "*"
   }
 }
