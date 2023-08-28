@@ -4,7 +4,7 @@ import ItemsType from './ItemsType.d';
 import { useContext } from 'react';
 import { DelayedLinkContext } from '../contexts/DelayedLinkContext';
 
-const HASH_NAVIGATION = '/#/';
+const HASH_NAVIGATION = '/projects/#/';
 
 const DelayedLink = (props) => {
   const { to, target, delay } = props;
