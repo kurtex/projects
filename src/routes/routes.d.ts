@@ -1,6 +1,6 @@
 const routes = {
   homePage: '/',
   qrChallenge: 'qr-challenge'
-};
+}
 
-export default routes;
+export default routes

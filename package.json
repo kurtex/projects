@@ -1,5 +1,5 @@
 {
-  "name": "qrchallenge",
+  "name": "projects",
   "private": true,
   "homepage": "https://kurtex.github.io/projects/",
   "version": "0.0.0",
@@ -10,8 +10,7 @@
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "test-semi": "semistandard && node my-normal-tests-littered-with-semicolons.js"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",
@@ -27,8 +26,8 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
-    "@types/react": "^18.0.37",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.38.0",
@@ -38,7 +37,8 @@
     "gh-pages": "^5.0.0",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
-    "vite": "^4.3.9",
-    "semistandard": "*"
+    "ts-standard": "^12.0.2",
+    "typescript": "^5.2.2",
+    "vite": "^4.3.9"
   }
 }

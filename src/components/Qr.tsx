@@ -1,6 +1,10 @@
-export const Qr = (props) => {
-  const { image, title, body } = props;
+interface QrProps {
+  image: string
+  title: string
+  body: string
+}
 
+export const Qr: React.FC<QrProps> = ({ image, title, body }) => {
   return (
     <section className='flex justify-center items-center h-[100vh]'>
       <div className='border rounded-2xl p-4 bg-white w-[321px]'>
@@ -15,5 +19,5 @@ export const Qr = (props) => {
         </section>
       </div>
     </section>
-  );
-};
+  )
+}
