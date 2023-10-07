@@ -9,12 +9,17 @@ interface AnimationProps {
 
 const Animation: React.FC<AnimationProps> = ({ animationData }) => {
   const lottieRef = useRef<LottieRefCurrentProps>(null)
+  const currentLottie = lottieRef.current
   const { play, setPlay, animationDuration, setAnimationDuration } = useContext(DelayedLinkContext)
 
-  const runAnimation = (): void => {
-    lottieRef.current?.stop()
-    lottieRef.current?.play()
+  // Play the animation
+  const playAnimation = (): void => {
+    resetAnimation()
+    currentLottie?.play()
   }
+
+  // Resets the animation to its first frame
+  const resetAnimation = (): void => currentLottie?.goToAndStop(0, true)
 
   const styles = {
     cursor: 'auto'
@@ -22,12 +27,14 @@ const Animation: React.FC<AnimationProps> = ({ animationData }) => {
 
   useEffect(() => {
     if (play) {
-      const lottieAnimationDuration = lottieRef.current?.getDuration(false)
+      // We get the duration of the animation and we set in the status shared by the context
+      const lottieAnimationDuration = currentLottie?.getDuration(false)
       setAnimationDuration(lottieAnimationDuration === undefined ? 0 : convertSecondToMillis(lottieAnimationDuration))
     }
 
+    // If the animation has any time, then run the animation and restart the animation options
     if (animationDuration > 0) {
-      runAnimation()
+      playAnimation()
       setPlay(false)
       setAnimationDuration(0)
     }
