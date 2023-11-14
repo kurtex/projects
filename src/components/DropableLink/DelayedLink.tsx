@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { useDrop } from 'react-dnd'
-import ItemsType from './ItemsType.d'
+import itemsType from './itemsType.d'
 import { useContext, useEffect } from 'react'
-import { DelayedLinkContext } from '../contexts/DelayedLinkContext'
+import { delayedLinkContext } from './contexts/delayedLinkContext'
 
 const HASH_NAVIGATION = '/projects/#/'
 
@@ -10,21 +10,21 @@ interface DelayedLinkProps extends React.ComponentPropsWithoutRef<'link'> {
   to: string
   target?: string
   delay?: number
-  dropItemAccepted?: ItemsType
+  dropItemAccepted?: itemsType
 }
 
-const DelayedLink: React.FC<DelayedLinkProps > = ({ to, target = '_self', delay = 0, children, dropItemAccepted = ItemsType.NONE }) => {
-  const { play, setPlay } = useContext(DelayedLinkContext)
+const DelayedLink: React.FC<DelayedLinkProps > = ({ to, target = '_self', delay = 0, children, dropItemAccepted = itemsType.NONE }) => {
+  const { play, setPlay } = useContext(delayedLinkContext)
 
   const styles = {
-    cursor: (dropItemAccepted === ItemsType.NONE) ? 'pointer' : 'auto'
+    cursor: (dropItemAccepted === itemsType.NONE) ? 'pointer' : 'auto'
   }
 
   const clickHandler = (e: React.MouseEvent): void => {
     e.preventDefault()
 
     // If there isn´t any dropable item for the link, then it becomes a common link with click handler
-    if (dropItemAccepted === ItemsType.NONE) {
+    if (dropItemAccepted === itemsType.NONE) {
       return doDelayedNavigation()
     }
   }
