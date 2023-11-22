@@ -6,6 +6,9 @@ import { useDrag, DragPreviewImage } from 'react-dnd'
 import DropableLink from './DropableLink/DropableLink'
 import itemsType from './DropableLink/itemsType.d'
 import CurveText from './CurveText'
+import { LANGUAGES } from '../constants/languages.d'
+import { useContext } from 'react'
+import { LanguageContext } from './DropableLink/contexts/languageContext'
 
 const ProjectLinks: React.FC = () => {
   const [, drag, preview] = useDrag(() => ({
@@ -15,20 +18,31 @@ const ProjectLinks: React.FC = () => {
     })
   }))
 
+  const { handleChangeLanguage, translate, currentLanguage } = useContext(LanguageContext)
+
   return (
     <article className='max-w-[1280px] flex flex-col m-auto p-10 h-full'>
       <header className='p-4 flex flex-col gap-5'>
+        <div className='w-full text-right'>
+          <select defaultValue='es' className='w-1/6' value={currentLanguage} onChange={handleChangeLanguage}>
+            {LANGUAGES.map(({ code, label }) => (
+              <option key={code} value={code}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </div>
         <h1 className='mb-2 mt-0 text-5xl font-medium leading-tight text-primary'>
-          Proyectos
+          {translate('projects_link_title')}
         </h1>
         <h6 className='mb-2 mt-0 text-xl font-medium leading-tight text-primary'>
-          Aquí tienes una lista de proyectos hechos en React:
+          {translate('projects_link_subtitle')}
         </h6>
       </header>
       <section className='flex justify-center flex-col align-middle h-3/6'>
         <div>
           <CurveText
-            text='Coge una moneda y sueltala en el proyecto que quieras ver'
+            text={translate('projects_link_curve_text', { droppable_item: translate('droppable_item_coin') })}
           />
           <DragPreviewImage connect={preview} src={coinSvg} />
           <div className='flex justify-center' ref={drag}>
@@ -38,10 +52,10 @@ const ProjectLinks: React.FC = () => {
       </section>
       <section className='flex flex-row justify-center m-5 mb-20 fixed bottom-0 gap-4'>
         <div className='pt-1 flex justify-center'>
-          <DropableLink animationData={animatedBox} to={routes.qrChallenge} dropItemAccepted={itemsType.COIN} linkText='QR Challenge' />
+          <DropableLink animationData={animatedBox} to={routes.qrChallenge} dropItemAccepted={itemsType.COIN} linkText={translate('projects_link_qr_challenge')} />
         </div>
         <div className='pt-1 flex justify-center'>
-          <DropableLink animationData={animatedBox} to={routes.tasksReducer} dropItemAccepted={itemsType.COIN} linkText='Tasks with reducer' />
+          <DropableLink animationData={animatedBox} to={routes.tasksReducer} dropItemAccepted={itemsType.COIN} linkText={translate('projects_link_tasks_reducer')} />
         </div>
       </section>
     </article>

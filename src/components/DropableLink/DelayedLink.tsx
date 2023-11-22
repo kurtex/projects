@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useDrop } from 'react-dnd'
 import itemsType from './itemsType.d'
 import { useContext, useEffect } from 'react'
-import { delayedLinkContext } from './contexts/delayedLinkContext'
+import { DelayedLinkContext } from './contexts/DelayedLinkContext'
 
 const HASH_NAVIGATION = '/projects/#/'
 
@@ -14,7 +14,7 @@ interface DelayedLinkProps extends React.ComponentPropsWithoutRef<'link'> {
 }
 
 const DelayedLink: React.FC<DelayedLinkProps > = ({ to, target = '_self', delay = 0, children, dropItemAccepted = itemsType.NONE }) => {
-  const { play, setPlay } = useContext(delayedLinkContext)
+  const { play, setPlay } = useContext(DelayedLinkContext)
 
   const styles = {
     cursor: (dropItemAccepted === itemsType.NONE) ? 'pointer' : 'auto'

@@ -1,6 +1,6 @@
 import Lottie, { LottieRefCurrentProps } from 'lottie-react'
 import { useContext, useEffect, useRef } from 'react'
-import { delayedLinkContext } from './contexts/delayedLinkContext'
+import { DelayedLinkContext } from './contexts/DelayedLinkContext'
 import { convertSecondToMillis } from '../../utils/conversionUtils'
 
 interface AnimationProps {
@@ -10,7 +10,7 @@ interface AnimationProps {
 const Animation: React.FC<AnimationProps> = ({ animationData }) => {
   const lottieRef = useRef<LottieRefCurrentProps>(null)
   const currentLottie = lottieRef.current
-  const { play, setPlay, animationDuration, setAnimationDuration } = useContext(delayedLinkContext)
+  const { play, setPlay, animationDuration, setAnimationDuration } = useContext(DelayedLinkContext)
 
   // Play the animation
   const playAnimation = (): void => {

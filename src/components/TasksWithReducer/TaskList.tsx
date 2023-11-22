@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from 'react'
 import task from './task.d'
 import { tasksContext } from './contexts/tasksContext'
 import { taskActionType } from './reducer/taskReducer'
+import { LanguageContext } from '../DropableLink/contexts/languageContext'
 
 interface TaskListProps {
   taskList: task[]
@@ -16,6 +17,7 @@ const TaskList: React.FC<TaskListProps> = ({ taskList }) => {
   const [edit, setEdit] = useState<number>(-1)
   const editInputRef = useRef<HTMLInputElement>(null)
   const { useDispatcher } = useContext(tasksContext)
+  const { translate } = useContext(LanguageContext)
 
   const handleSaveTaskEdition = (task: task): void => {
     setEdit(-1)
@@ -43,7 +45,7 @@ const TaskList: React.FC<TaskListProps> = ({ taskList }) => {
           <li className='w-6/6 flex flex-row justify-between gap-3' key={task.id}>
             <div className='flex gap-2 w-3/6'>
               <input
-                type='checkbox' defaultChecked={task.done} onChange={(e) => editTask({
+                type='checkbox' className='h-[100%]' defaultChecked={task.done} onChange={(e) => editTask({
                   id: task.id,
                   text: task.text,
                   done: e.currentTarget.checked
@@ -61,12 +63,12 @@ const TaskList: React.FC<TaskListProps> = ({ taskList }) => {
                       text: (editInputRef.current == null) ? task.text : editInputRef.current.value,
                       done: task.done
                     })}
-                  >Guardar
-                  </button>
-                : <button className='btn-primary' id='editTask' disabled={edit !== -1 && edit !== task.id} onClick={() => setEdit(task.id)}>Editar</button>}
+                  >{translate('tasklist_save_button')}
+                </button>
+                : <button className='btn-primary' id='editTask' disabled={edit !== -1 && edit !== task.id} onClick={() => setEdit(task.id)}>{translate('tasklist_edit_button')}</button>}
               {edit === task.id
-                ? <button className='btn-primary' id='cancelEdition' onClick={() => setEdit(-1)}>Cancelar</button>
-                : <button className='btn-primary' id='removeTask' onClick={() => handleDeleteTask(task)}>Borrar</button>}
+                ? <button className='btn-primary' id='cancelEdition' onClick={() => setEdit(-1)}>{translate('tasklist_cancel_button')}</button>
+                : <button className='btn-primary' id='removeTask' onClick={() => handleDeleteTask(task)}>{translate('tasklist_remove_button')}</button>}
 
             </div>
           </li>

@@ -1,0 +1,15 @@
+{
+    "projects_link_title": "Proyectos",
+    "projects_link_subtitle": "Aquí tienes una lista de proyectos hechos en React:",
+    "projects_link_curve_text": "Coge una {{droppable_item}} y sueltala en el proyecto que quieras ver",
+    "droppable_item_coin": "moneda",
+    "projects_link_qr_challenge": "Desafio QR",
+    "projects_link_tasks_reducer": "Tareas con reducer",
+    "tasklist_title": "Lista de tareas",
+    "tasklist_placeholder": "Añadir una nueva tarea",
+    "tasklist_add_button": "Añadir",
+    "tasklist_edit_button": "Editar",
+    "tasklist_save_button": "Guardar",
+    "tasklist_cancel_button": "Cancelar",
+    "tasklist_remove_button": "Borrar"
+}

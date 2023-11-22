@@ -1,9 +1,9 @@
 import { createContext } from 'react'
 
 /**
- * Interface for the values allowed in the {@link delayedLinkContext}.
+ * Interface for the values allowed in the {@link DelayedLinkContext}.
  */
-export interface delayedLinkContextProps {
+export interface DelayedLinkContextProps {
   play: boolean
   setPlay: (p: boolean) => void
   animationDuration: number
@@ -13,7 +13,7 @@ export interface delayedLinkContextProps {
 /**
  * Context for {@link DelayedLink} to pass props between its child components.
  */
-export const delayedLinkContext = createContext<delayedLinkContextProps>({
+export const DelayedLinkContext = createContext<DelayedLinkContextProps>({
   play: false,
   setPlay: () => {},
   animationDuration: 0,
