@@ -13,18 +13,19 @@ import { LanguageContext } from './DropableLink/contexts/languageContext'
 // Placeholder Chest Icon Component
 const ChestIcon = ({ className }: { className?: string }) => (
   <svg
-    className={className}
+    className={`${className} chest-icon-svg`} // Added chest-icon-svg class
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true" // Decorative icon
   >
-    {/* Lid */}
-    <path
-      d="M15 35 C15 20, 85 20, 85 35 L 85 45 L 15 45 Z"
-      fill="#A0522D" // SaddleBrown
-      stroke="#654321" // DarkBrown for outline
-      strokeWidth="2"
-    />
+    <g className="chest-lid"> {/* Lid group */}
+      <path
+        d="M15 35 C15 20, 85 20, 85 35 L 85 45 L 15 45 Z"
+        fill="#A0522D" // SaddleBrown
+        stroke="#654321" // DarkBrown for outline
+        strokeWidth="2"
+      />
+    </g>
     {/* Body */}
     <rect
       x="10" y="45"
@@ -56,7 +57,7 @@ const ProjectLinks: React.FC = () => {
   const [isTasksChestOver, setIsTasksChestOver] = useState(false);
 
   return (
-    <article className='max-w-[1280px] flex flex-col m-auto p-10 h-full bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-sans'> {/* Page background and default text color, default font Outfit-like */}
+    <article className='flex flex-col h-full bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-sans px-4 sm:px-6 lg:px-8 py-10'> {/* Full-width layout with responsive padding */}
       <header className='p-4 flex flex-col gap-5'>
         <div className='w-full text-right'>
           <select defaultValue='es' className='w-auto p-2 rounded-md bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-sky-500' value={currentLanguage} onChange={handleChangeLanguage}> {/* Styled select */}
@@ -85,9 +86,9 @@ const ProjectLinks: React.FC = () => {
       </section>
       <section className='flex flex-row flex-wrap justify-center gap-8 mt-10 mb-10'> {/* Modified projects section */}
         <div 
-          className={`chest p-6 rounded-lg border shadow-md bg-white dark:bg-slate-800 hover:border-sky-500 dark:hover:border-sky-400 hover:scale-105 flex flex-col items-center text-center transition-all duration-150 ease-in-out 
+          className={`chest p-6 rounded-lg border shadow-md bg-white dark:bg-slate-800 flex flex-col items-center text-center transition-all duration-150 ease-in-out 
                       border-slate-300 dark:border-slate-600 ${isQrChestOver ? 'dragging-over-chest' : ''}`}
-        > {/* Chest styles with flex layout for icon + link, added transition and conditional class */}
+        > {/* Chest styles with flex layout for icon + link, added transition and conditional class, removed hover effects */}
           <ChestIcon className='w-16 h-16 mb-3' /> {/* Icon with size and margin */}
           <DropableLink 
             animationData={animatedBox} 
@@ -98,9 +99,9 @@ const ProjectLinks: React.FC = () => {
           />
         </div>
         <div 
-          className={`chest p-6 rounded-lg border shadow-md bg-white dark:bg-slate-800 hover:border-sky-500 dark:hover:border-sky-400 hover:scale-105 flex flex-col items-center text-center transition-all duration-150 ease-in-out 
+          className={`chest p-6 rounded-lg border shadow-md bg-white dark:bg-slate-800 flex flex-col items-center text-center transition-all duration-150 ease-in-out 
                       border-slate-300 dark:border-slate-600 ${isTasksChestOver ? 'dragging-over-chest' : ''}`}
-        > {/* Chest styles with flex layout for icon + link, added transition and conditional class */}
+        > {/* Chest styles with flex layout for icon + link, added transition and conditional class, removed hover effects */}
           <ChestIcon className='w-16 h-16 mb-3' /> {/* Icon with size and margin */}
           <DropableLink 
             animationData={animatedBox} 

@@ -25,5 +25,15 @@
 /* Custom class for drag-over effect on chests */
 .dragging-over-chest {
   border-color: #0ea5e9 !important; /* sky-500 */
-  transform: scale(1.08);
+  /* transform: scale(1.08); Removed to avoid conflict with lid animation */
+}
+
+/* Chest Icon Lid Animation */
+.chest-icon-svg .chest-lid {
+  transform-origin: 50px 45px; /* Center X (50), Back edge of lid Y (45) in SVG viewBox units */
+  transition: transform 0.3s ease-in-out;
+}
+
+.dragging-over-chest .chest-icon-svg .chest-lid {
+  transform: perspective(150px) rotateX(-50deg);
 }
