@@ -21,3 +21,9 @@
   }
 
 }
+
+/* Custom class for drag-over effect on chests */
+.dragging-over-chest {
+  border-color: #0ea5e9 !important; /* sky-500 */
+  transform: scale(1.08);
+}

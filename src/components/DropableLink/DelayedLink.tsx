@@ -11,9 +11,10 @@ interface DelayedLinkProps extends React.ComponentPropsWithoutRef<'link'> {
   target?: string
   delay?: number
   dropItemAccepted?: itemsType
+  onIsOverChange?: (isOver: boolean) => void // New prop
 }
 
-const DelayedLink: React.FC<DelayedLinkProps > = ({ to, target = '_self', delay = 0, children, dropItemAccepted = itemsType.NONE }) => {
+const DelayedLink: React.FC<DelayedLinkProps > = ({ to, target = '_self', delay = 0, children, dropItemAccepted = itemsType.NONE, onIsOverChange }) => {
   const { play, setPlay } = useContext(DelayedLinkContext)
 
   const styles = {
@@ -36,12 +37,21 @@ const DelayedLink: React.FC<DelayedLinkProps > = ({ to, target = '_self', delay 
     }, delay)
   }
 
-  const [, drop] = useDrop(() => ({
+  const [{ isOver }, drop] = useDrop(() => ({ // Get isOver state
     accept: dropItemAccepted,
     drop: () => {
       setPlay(true)
-    }
+    },
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver() // Collect isOver
+    })
   }))
+
+  useEffect(() => {
+    if (onIsOverChange) {
+      onIsOverChange(isOver);
+    }
+  }, [isOver, onIsOverChange]);
 
   useEffect(() => {
     if (play && delay > 0) {
