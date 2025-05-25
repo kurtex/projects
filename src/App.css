@@ -8,5 +8,5 @@ html, body, main {
 #root {
   margin: 0 auto;
   text-align: center;
-  font-family: "Outfit", sans-serif;
+  /* font-family: "Outfit", sans-serif; */ /* Removed as Tailwind handles this via font-sans */
 }
