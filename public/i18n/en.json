@@ -12,4 +12,7 @@
     "tasklist_save_button": "Save",
     "tasklist_cancel_button": "Cancel",
     "tasklist_remove_button": "Remove"
+    ,"theme_light": "Light"
+    ,"theme_dark": "Dark"
+    ,"theme_system": "System"
 }
