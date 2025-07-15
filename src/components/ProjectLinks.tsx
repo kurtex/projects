@@ -7,8 +7,10 @@ import DropableLink from './DropableLink/DropableLink'
 import itemsType from './DropableLink/itemsType.d'
 import CurveText from './CurveText'
 import { LANGUAGES } from '../constants/languages.d'
+import { THEMES } from '../constants/themes.d'
 import { useContext } from 'react'
 import { LanguageContext } from './DropableLink/contexts/languageContext'
+import { ThemeContext } from './DropableLink/contexts/ThemeContext'
 
 const ProjectLinks: React.FC = () => {
   const [, drag, preview] = useDrag(() => ({
@@ -19,15 +21,23 @@ const ProjectLinks: React.FC = () => {
   }))
 
   const { handleChangeLanguage, translate, currentLanguage } = useContext(LanguageContext)
+  const { handleChangeTheme, currentTheme } = useContext(ThemeContext)
 
   return (
     <article className='max-w-[1280px] flex flex-col m-auto p-10 h-full'>
       <header className='p-4 flex flex-col gap-5'>
-        <div className='w-full text-right'>
-          <select defaultValue='es' className='w-1/6' value={currentLanguage} onChange={handleChangeLanguage}>
+        <div className='w-full flex justify-end gap-2'>
+          <select className='w-1/6' value={currentLanguage} onChange={handleChangeLanguage}>
             {LANGUAGES.map(({ code, label }) => (
               <option key={code} value={code}>
                 {label}
+              </option>
+            ))}
+          </select>
+          <select className='w-1/6' value={currentTheme} onChange={handleChangeTheme}>
+            {THEMES.map(({ code, label }) => (
+              <option key={code} value={code}>
+                {translate(label)}
               </option>
             ))}
           </select>
