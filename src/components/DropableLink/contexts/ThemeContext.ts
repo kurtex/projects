@@ -9,3 +9,4 @@ export const ThemeContext = createContext<ThemeContextProps>({
   currentTheme: 'system',
   handleChangeTheme: () => {}
 })
+
