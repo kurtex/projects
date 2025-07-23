@@ -10,9 +10,19 @@
     @apply text-neutral-800;
   }
 
-  html.dark {
+  html.dark,
+  body.dark {
     @apply text-neutral-50;
     @apply bg-neutral-800;
+  }
+
+  select,
+  input {
+    @apply dark:bg-neutral-700 dark:text-neutral-50;
+  }
+
+  option {
+    @apply dark:bg-neutral-700 dark:text-neutral-50;
   }
 
   /** Selector overwrited **/

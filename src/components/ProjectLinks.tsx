@@ -27,14 +27,14 @@ const ProjectLinks: React.FC = () => {
     <article className='max-w-[1280px] flex flex-col m-auto p-10 h-full'>
       <header className='p-4 flex flex-col gap-5'>
         <div className='w-full flex justify-end gap-2'>
-          <select className='w-1/6' value={currentLanguage} onChange={handleChangeLanguage}>
+          <select className='w-1/6 dark:bg-neutral-700 dark:text-neutral-50' value={currentLanguage} onChange={handleChangeLanguage}>
             {LANGUAGES.map(({ code, label }) => (
               <option key={code} value={code}>
                 {label}
               </option>
             ))}
           </select>
-          <select className='w-1/6' value={currentTheme} onChange={handleChangeTheme}>
+          <select className='w-1/6 dark:bg-neutral-700 dark:text-neutral-50' value={currentTheme} onChange={handleChangeTheme}>
             {THEMES.map(({ code, label }) => (
               <option key={code} value={code}>
                 {translate(label)}
