@@ -29,11 +29,23 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const root = window.document.documentElement
+    const body = window.document.body
+
+    const addDark = (): void => {
+      root.classList.add('dark')
+      body.classList.add('dark')
+    }
+
+    const removeDark = (): void => {
+      root.classList.remove('dark')
+      body.classList.remove('dark')
+    }
+
     const applyTheme = (themeValue: string): void => {
-      if (themeValue === 'dark') root.classList.add('dark')
-      else if (themeValue === 'light') root.classList.remove('dark')
-      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) root.classList.add('dark')
-      else root.classList.remove('dark')
+      if (themeValue === 'dark') addDark()
+      else if (themeValue === 'light') removeDark()
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) addDark()
+      else removeDark()
     }
 
     applyTheme(theme)
@@ -41,10 +53,11 @@ const App: React.FC = () => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const listener = (e: MediaQueryListEvent): void => {
       if (theme === 'system') {
-        if (e.matches) root.classList.add('dark')
-        else root.classList.remove('dark')
+        if (e.matches) addDark()
+        else removeDark()
       }
     }
+
     mediaQuery.addEventListener('change', listener)
     return () => mediaQuery.removeEventListener('change', listener)
   }, [theme])
@@ -61,7 +74,7 @@ const App: React.FC = () => {
     setTheme(e.target.value)
   }
   return (
-    <main className='text-[#000] bg-[#d6e2f0]'>
+    <main className='bg-[#d6e2f0] dark:bg-neutral-800 text-[#000] dark:text-neutral-50'>
       <ThemeContext.Provider value={{ currentTheme: theme, handleChangeTheme: handleTheme }}>
         <LanguageContext.Provider value={{ translate: t, handleChangeLanguage: handleLanguage, currentLanguage: value }}>
           <Suspense>
